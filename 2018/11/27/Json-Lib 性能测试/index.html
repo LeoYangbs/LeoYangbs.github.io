@@ -127,12 +127,12 @@
 <meta name="keywords" content="JMH">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Json-lib 性能测试">
-<meta property="og:url" content="http://okclub.online/2018/11/27/Json-Lib 性能测试/index.html">
+<meta property="og:url" content="http://okclub.online/2018/11/27/Json-lib 性能测试/index.html">
 <meta property="og:site_name" content="OKClub">
 <meta property="og:description" content="Json-lib 性能测试 本文基于 JMH套件, 针对常见的序列化组件, 比对其相应的序列化与反序列化性能.">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://okclub.online/images/json_lib_result.png">
-<meta property="og:updated_time" content="2018-11-27T08:59:56.115Z">
+<meta property="og:updated_time" content="2018-11-27T09:04:10.188Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Json-lib 性能测试">
 <meta name="twitter:description" content="Json-lib 性能测试 本文基于 JMH套件, 针对常见的序列化组件, 比对其相应的序列化与反序列化性能.">
@@ -166,7 +166,7 @@
 
 
 
-  <link rel="canonical" href="http://okclub.online/2018/11/27/Json-Lib 性能测试/"/>
+  <link rel="canonical" href="http://okclub.online/2018/11/27/Json-lib 性能测试/"/>
 
 
 
@@ -343,7 +343,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://okclub.online/2018/11/27/Json-Lib 性能测试/">
+    <link itemprop="mainEntityOfPage" href="http://okclub.online/2018/11/27/Json-lib 性能测试/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -431,7 +431,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  281
+                  292
                 </span>
               
 
@@ -490,6 +490,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">@Param</span>(&#123;<span class="string">"fastJson"</span>, <span class="string">"jackson"</span>, <span class="string">"gson"</span>&#125;)</span><br><span class="line">  <span class="keyword">private</span> String jsonLib;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Setup</span>(Level.Trial)</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preInit</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">switch</span> (jsonLib) &#123;</span><br><span class="line">          <span class="keyword">case</span> <span class="string">"fastJson"</span>:</span><br><span class="line">              baseSerializer = <span class="keyword">new</span> FastjsonSerializer();</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="string">"jackson"</span>:</span><br><span class="line">              baseSerializer = <span class="keyword">new</span> JacksonSerializer();</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">          <span class="keyword">case</span> <span class="string">"gson"</span>:</span><br><span class="line">              baseSerializer = <span class="keyword">new</span> GsonSerializer();</span><br><span class="line">              <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="meta">@Benchmark</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">serialize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> baseSerializer.serialize(serializeObj);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Benchmark</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Object <span class="title">deserialize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> baseSerializer.deserialize(deserializeObj, Message.class);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <p>序列化,反序列化对象构建</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> List&lt;Message&gt; serializeObj;</span><br><span class="line"><span class="keyword">private</span> String deserializeObj;</span><br><span class="line"><span class="keyword">private</span> BaseSerializer baseSerializer;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Setup</span>(Level.Iteration)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">prepare</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Date date = <span class="keyword">new</span> Date();</span><br><span class="line">    AtomicLong ids = <span class="keyword">new</span> AtomicLong(<span class="number">10000000l</span>);</span><br><span class="line">    ArrayList&lt;Double&gt; doubles = <span class="keyword">new</span> ArrayList&lt;Double&gt;() &#123;&#123;add(<span class="number">103</span>D); add(<span class="number">104</span>D);&#125;&#125;;</span><br><span class="line">    serializeObj = <span class="keyword">new</span> ArrayList&lt;&gt;(<span class="number">1000</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++) &#123;</span><br><span class="line">        InnerMessage innerMessage = InnerMessage.builder().name(<span class="string">"inner name"</span>).build();</span><br><span class="line">        Message message = Message.builder().strObj(<span class="string">"outer"</span>).floatObj(<span class="number">102f</span>).doubleObjList(doubles).boolObj(Boolean.TRUE).bytesObj(<span class="keyword">new</span> <span class="keyword">byte</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;).int32Obj(<span class="number">32</span>).int64Obj(<span class="number">64</span>).innerMessageObj(innerMessage).createDate(date).id(ids.getAndIncrement()).build();</span><br><span class="line">        serializeObj.add(message);</span><br><span class="line">    &#125;</span><br><span class="line">    deserializeObj = JSON.toJSONString(serializeObj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>详细代码: <a href="https://github.com/LeoYangbs/Java-Jsonlib-Compare" target="_blank" rel="noopener">https://github.com/LeoYangbs/Java-Jsonlib-Compare</a></p>
 <p>测试结果:</p>
 <hr>
 <p><img src="/images/json_lib_result.png" alt="json_lib_result"></p>
@@ -749,7 +750,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">734</span>
+    <span title="Site words total count">745</span>
   
 </div>
 
